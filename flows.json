@@ -1,0 +1,55 @@
+[
+    {
+        "id": "03da5dd03bd1fbbf",
+        "type": "tab",
+        "label": "Flux 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "6458731d0b700607",
+        "type": "inject",
+        "z": "03da5dd03bd1fbbf",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 270,
+        "y": 160,
+        "wires": [
+            [
+                "6b71a05d5d43d679"
+            ]
+        ]
+    },
+    {
+        "id": "6b71a05d5d43d679",
+        "type": "debug",
+        "z": "03da5dd03bd1fbbf",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 220,
+        "wires": []
+    }
+]

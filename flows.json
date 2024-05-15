@@ -39,49 +39,157 @@
         "sessionExpiry": ""
     },
     {
-        "id": "530e5d1194e2623f",
-        "type": "inject",
-        "z": "4011939e64afe1b1",
+        "id": "e6a61ad9a248f9f5",
+        "type": "mongodb3",
+        "uri": "mongodb://localhost:27017/fermeaquacole",
         "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 570,
-        "y": 60,
-        "wires": [
-            [
-                "8b48fb2fedc1cfc9"
-            ]
-        ]
+        "options": "",
+        "parallelism": "-1"
     },
     {
-        "id": "8b48fb2fedc1cfc9",
-        "type": "debug",
-        "z": "4011939e64afe1b1",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 740,
-        "y": 60,
-        "wires": []
+        "id": "2c7e66e3626e7eef",
+        "type": "ui_group",
+        "name": "Date and Time",
+        "tab": "29a5a894f9cc47ae",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "52e872bd94fc4158",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "",
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "45b63fcf221b1a5c",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "fd063ac6698cc46f",
+        "type": "ui_group",
+        "name": "Function",
+        "tab": "57b25a3394207315",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "57b25a3394207315",
+        "type": "ui_tab",
+        "name": "Realtime",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "29a5a894f9cc47ae",
+        "type": "ui_tab",
+        "name": "Date and Time",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
     },
     {
         "id": "d40d8f5e37ea5164",
@@ -96,19 +204,57 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 230,
-        "y": 360,
+        "x": 170,
+        "y": 100,
         "wires": [
             [
-                "f50f7a065d5ecc49"
+                "9ed4077df27a955d",
+                "09c52b7a9940e21d",
+                "24a2a7fadf3df587",
+                "3fd40cd2456f2618"
             ]
         ]
     },
     {
-        "id": "f50f7a065d5ecc49",
+        "id": "9ed4077df27a955d",
+        "type": "mongodb3 in",
+        "z": "4011939e64afe1b1",
+        "service": "_ext_",
+        "configNode": "e6a61ad9a248f9f5",
+        "name": "Database In",
+        "collection": "tpdata",
+        "operation": "insertOne",
+        "x": 630,
+        "y": 100,
+        "wires": [
+            [
+                "f3cf11fb9c5f9e72"
+            ]
+        ]
+    },
+    {
+        "id": "02ba41a51c5326f9",
+        "type": "function",
+        "z": "4011939e64afe1b1",
+        "name": "json msg exemple",
+        "func": "\n\nmsg.payload = {\n    \"time\": 1715731059244,\n    \"temperature\": 15.5,\n    \"pressure\": 115584\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 110,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f3cf11fb9c5f9e72",
         "type": "debug",
         "z": "4011939e64afe1b1",
-        "name": "debug 2",
+        "name": "debug 3",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -117,8 +263,278 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 460,
-        "y": 360,
+        "x": 1020,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "2f148c3941ac45fc",
+        "type": "mongodb3 in",
+        "z": "4011939e64afe1b1",
+        "service": "_ext_",
+        "configNode": "e6a61ad9a248f9f5",
+        "name": "Database all out",
+        "collection": "tpdata",
+        "operation": "find.toArray",
+        "x": 520,
+        "y": 480,
+        "wires": [
+            [
+                "aff19ec85bf709e4"
+            ]
+        ]
+    },
+    {
+        "id": "1bf5af5f49df9a72",
+        "type": "http response",
+        "z": "4011939e64afe1b1",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1310,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "fa7ee4d0885f4183",
+        "type": "tableify",
+        "z": "4011939e64afe1b1",
+        "name": "",
+        "before": " yoyo salemou alaykom",
+        "after": "beselemou aalaykom",
+        "tableStyle": "",
+        "theadStyle": "",
+        "tbodyStyle": "",
+        "trStyle": "",
+        "tdStyle": "",
+        "x": 1160,
+        "y": 480,
+        "wires": [
+            [
+                "1bf5af5f49df9a72"
+            ]
+        ]
+    },
+    {
+        "id": "15fa69488834f701",
+        "type": "http in",
+        "z": "4011939e64afe1b1",
+        "name": "get",
+        "url": "/historic",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 310,
+        "y": 480,
+        "wires": [
+            [
+                "2f148c3941ac45fc"
+            ]
+        ]
+    },
+    {
+        "id": "3fd40cd2456f2618",
+        "type": "function",
+        "z": "4011939e64afe1b1",
+        "name": "Convert Time",
+        "func": "// Extract time from the JSON message and convert it to a formatted string\nvar formattedTime = new Date(msg.payload.time).toLocaleString();\n\n// Set the formatted time value to msg.payload\nmsg.payload = formattedTime;\n\n// Return the modified msg object\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 200,
+        "wires": [
+            [
+                "2238915295c41ba3"
+            ]
+        ]
+    },
+    {
+        "id": "579135c05cadafe7",
+        "type": "comment",
+        "z": "4011939e64afe1b1",
+        "name": "Stock Data in Database",
+        "info": "",
+        "x": 620,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "d3b70774098a21a3",
+        "type": "comment",
+        "z": "4011939e64afe1b1",
+        "name": "Realtime Data Dashboard",
+        "info": "",
+        "x": 710,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "09c52b7a9940e21d",
+        "type": "function",
+        "z": "4011939e64afe1b1",
+        "name": "Extract temperature",
+        "func": "// Extract temperature from the JSON message\nvar temperature = msg.payload.temperature;\n\n\n\n// Set temperature value to msg.payload\nmsg.payload = temperature;\n\n// Return the modified msg object\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 240,
+        "wires": [
+            [
+                "c26df9a27a8c48d5"
+            ]
+        ]
+    },
+    {
+        "id": "c26df9a27a8c48d5",
+        "type": "ui_gauge",
+        "z": "4011939e64afe1b1",
+        "name": "Temperature",
+        "group": "fd063ac6698cc46f",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": " °C",
+        "format": "{{value}} °C",
+        "min": 0,
+        "max": "40",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "10",
+        "seg2": "20",
+        "diff": false,
+        "className": "",
+        "x": 950,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "f9cc2511b9174424",
+        "type": "ui_gauge",
+        "z": "4011939e64afe1b1",
+        "name": "Pressure",
+        "group": "fd063ac6698cc46f",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Pressure",
+        "label": "Pa",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "200000",
+        "colors": [
+            "#00b500",
+            "#69694f",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 960,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "24a2a7fadf3df587",
+        "type": "function",
+        "z": "4011939e64afe1b1",
+        "name": "Extract pressure",
+        "func": "// Extract temperature from the JSON message\nvar pressure = msg.payload.pressure;\n\n// Set temperature value to msg.payload\nmsg.payload = pressure;\n\n// Return the modified msg object\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 280,
+        "wires": [
+            [
+                "f9cc2511b9174424"
+            ]
+        ]
+    },
+    {
+        "id": "b456c8b35b17e6b0",
+        "type": "function",
+        "z": "4011939e64afe1b1",
+        "name": "Remove id",
+        "func": "\nvar  numberOfObjects = Object.keys(msg.payload).length;\nfor (let i = 0; i < numberOfObjects; i++) {\n\n delete msg.payload[i]['_id'];\n\n}\n\nreturn msg\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 830,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2238915295c41ba3",
+        "type": "ui_text",
+        "z": "4011939e64afe1b1",
+        "group": "fd063ac6698cc46f",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Time",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 950,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "aff19ec85bf709e4",
+        "type": "function",
+        "z": "4011939e64afe1b1",
+        "name": "Remove id and Convert Time",
+        "func": "\nvar formattedTime;\nvar  numberOfObjects = Object.keys(msg.payload).length;\n\nfor (let i = 0; i < numberOfObjects; i++) {\n\n delete msg.payload[i]['_id'];\n // Extract time from the JSON message and convert it to a formatted string\n formattedTime = new Date(msg.payload[i]['time']).toLocaleString();\n\n // Set the formatted time value to msg.payload\n  msg.payload[i]['time'] = formattedTime;\n\n}\n\nreturn msg\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 480,
+        "wires": [
+            [
+                "fa7ee4d0885f4183"
+            ]
+        ]
+    },
+    {
+        "id": "091426fc05364cec",
+        "type": "comment",
+        "z": "4011939e64afe1b1",
+        "name": "Extract Data from DB with http get request and display it in a html table",
+        "info": "",
+        "x": 810,
+        "y": 400,
         "wires": []
     }
 ]

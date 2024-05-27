@@ -10,13 +10,13 @@
     {
         "id": "7bf9ead0e521452d",
         "type": "mqtt-broker",
-        "name": "Mosquitto",
+        "name": "Mosquito",
         "broker": "127.0.0.1",
         "port": "1883",
         "clientid": "",
         "autoConnect": true,
         "usetls": false,
-        "protocolVersion": "4",
+        "protocolVersion": "3",
         "keepalive": "60",
         "cleansession": true,
         "autoUnsubscribe": true,
@@ -192,26 +192,94 @@
         "hidden": false
     },
     {
+        "id": "957588672db18d99",
+        "type": "mqtt-broker",
+        "name": "m2m.eclipse.org",
+        "broker": "198.41.30.254",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "3",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "92b2802d2c4cd65b",
+        "type": "mqtt-broker",
+        "name": "test.mosquitto.org",
+        "broker": "test.mosquitto.org",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "c71771c6b6ce37e4",
+        "type": "node-red-contrib-whatsapp-cmb-account",
+        "name": "Aquaculture Farm"
+    },
+    {
         "id": "d40d8f5e37ea5164",
         "type": "mqtt in",
         "z": "4011939e64afe1b1",
         "name": "",
-        "topic": "Data",
+        "topic": "aquaculture/data",
         "qos": "0",
         "datatype": "auto-detect",
-        "broker": "7bf9ead0e521452d",
+        "broker": "92b2802d2c4cd65b",
         "nl": false,
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 170,
-        "y": 100,
+        "x": 160,
+        "y": 140,
         "wires": [
             [
                 "9ed4077df27a955d",
                 "09c52b7a9940e21d",
                 "24a2a7fadf3df587",
-                "3fd40cd2456f2618"
+                "3fd40cd2456f2618",
+                "412f4d71128b5c06"
             ]
         ]
     },
@@ -222,7 +290,7 @@
         "service": "_ext_",
         "configNode": "e6a61ad9a248f9f5",
         "name": "Database In",
-        "collection": "tpdata",
+        "collection": "SensorDatas",
         "operation": "insertOne",
         "x": 630,
         "y": 100,
@@ -255,7 +323,7 @@
         "type": "debug",
         "z": "4011939e64afe1b1",
         "name": "debug 3",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -274,10 +342,10 @@
         "service": "_ext_",
         "configNode": "e6a61ad9a248f9f5",
         "name": "Database all out",
-        "collection": "tpdata",
+        "collection": "SensorDatas",
         "operation": "find.toArray",
-        "x": 520,
-        "y": 480,
+        "x": 400,
+        "y": 680,
         "wires": [
             [
                 "aff19ec85bf709e4"
@@ -291,8 +359,8 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 1310,
-        "y": 480,
+        "x": 1190,
+        "y": 680,
         "wires": []
     },
     {
@@ -307,8 +375,8 @@
         "tbodyStyle": "",
         "trStyle": "",
         "tdStyle": "",
-        "x": 1160,
-        "y": 480,
+        "x": 1000,
+        "y": 680,
         "wires": [
             [
                 "1bf5af5f49df9a72"
@@ -324,8 +392,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 310,
-        "y": 480,
+        "x": 190,
+        "y": 680,
         "wires": [
             [
                 "2f148c3941ac45fc"
@@ -480,8 +548,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 830,
-        "y": 540,
+        "x": 710,
+        "y": 740,
         "wires": [
             []
         ]
@@ -519,8 +587,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 820,
-        "y": 480,
+        "x": 700,
+        "y": 680,
         "wires": [
             [
                 "fa7ee4d0885f4183"
@@ -533,8 +601,87 @@
         "z": "4011939e64afe1b1",
         "name": "Extract Data from DB with http get request and display it in a html table",
         "info": "",
-        "x": 810,
-        "y": 400,
+        "x": 690,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "bf56e781cda39fa3",
+        "type": "node-red-contrib-whatsapp-cmb-send-message",
+        "z": "4011939e64afe1b1",
+        "name": "",
+        "credtype": "account",
+        "account": "c71771c6b6ce37e4",
+        "text": "payload",
+        "phonenumbervalue": "",
+        "apikeyvalue": "",
+        "apikeyinputtypemessage": "msg",
+        "phonenumberinputtypemessage": "msg",
+        "inputtypemessage": "msg",
+        "rejectssl": false,
+        "x": 960,
+        "y": 340,
+        "wires": [
+            [
+                "3d4201cd71721d2b"
+            ]
+        ]
+    },
+    {
+        "id": "82ea814a6be4b884",
+        "type": "function",
+        "z": "4011939e64afe1b1",
+        "name": "Convert Json to String",
+        "func": "// Check if the message has a payload\nif (msg.payload) {\n    // Create a custom message\n    var customMessage = \"Alert! \";\n\n    // Check for temperature and pressure in the payload\n    if (msg.payload.temperature !== undefined) {\n        customMessage += \"Temperature: \" + msg.payload.temperature + \"°C. \";\n    }\n\n    if (msg.payload.pressure !== undefined) {\n        customMessage += \"Pressure: \" + msg.payload.pressure + \" Pa. \";\n    }\n\n    if (msg.payload.time !== undefined) {\n        customMessage += \"Time: \" + msg.payload.time + \".\";\n    }\n\n    // Set the custom message as the payload and convert to string\n    msg.payload = customMessage;\n    return msg;\n} else {\n    // No payload, do not send the message\n    return null;\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 340,
+        "wires": [
+            [
+                "bf56e781cda39fa3"
+            ]
+        ]
+    },
+    {
+        "id": "412f4d71128b5c06",
+        "type": "function",
+        "z": "4011939e64afe1b1",
+        "name": "IF",
+        "func": "var temperature = msg.payload.temperature;\nvar pressure = msg.payload.pressure;\nvar formattedTime = new Date(msg.payload.time).toLocaleString();\n\nvar newPayload = {};\nvar conditionMet = false;\n\nif (temperature > 40) {\n    newPayload.temperature = temperature;\n    conditionMet = true;\n}\n\nif (pressure > 115584) {\n    newPayload.pressure = pressure;\n    conditionMet = true;\n}\n\nif (conditionMet) {\n    newPayload.time = formattedTime;\n    msg.payload = newPayload;\n    return msg;\n} else {\n    return null;  // Do not send the message if no condition is met\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 340,
+        "wires": [
+            [
+                "82ea814a6be4b884"
+            ]
+        ]
+    },
+    {
+        "id": "3d4201cd71721d2b",
+        "type": "debug",
+        "z": "4011939e64afe1b1",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1200,
+        "y": 340,
         "wires": []
     }
 ]

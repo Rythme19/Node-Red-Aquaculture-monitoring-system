@@ -8,9 +8,9 @@
         "env": []
     },
     {
-        "id": "b1e52247926f4807",
+        "id": "a4d14a1321537e56",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "Flow 2",
         "disabled": false,
         "info": "",
         "env": []
@@ -400,8 +400,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 340,
-        "y": 220,
+        "x": 300,
+        "y": 280,
         "wires": [
             [
                 "ee9343f05b8994ea"
@@ -437,8 +437,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 350,
-        "y": 460,
+        "x": 290,
+        "y": 860,
         "wires": [
             []
         ]
@@ -561,7 +561,7 @@
         "z": "4011939e64afe1b1",
         "name": "Realtime Data in Node-red Dashboard",
         "info": "",
-        "x": 1170,
+        "x": 1070,
         "y": 380,
         "wires": []
     },
@@ -810,47 +810,10 @@
         "wires": []
     },
     {
-        "id": "341726230533250d",
-        "type": "function",
-        "z": "4011939e64afe1b1",
-        "name": "function 1",
-        "func": "\n// Create an object to hold both temperature and pressure\nvar data = {\n    temperature: msg.payload.temperature,\n    pressure: msg.payload.pressure\n};\n\n// Assign the object containing both values to msg.payload\nmsg.payload = data;\n\n// Return the modified msg object\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 820,
-        "y": 640,
-        "wires": [
-            [
-                "f69f4b9d8b79a9a9",
-                "bbdd5a19bbed033c"
-            ]
-        ]
-    },
-    {
-        "id": "0c321460c75e5626",
-        "type": "debug",
-        "z": "4011939e64afe1b1",
-        "name": "debug 5",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1360,
-        "y": 700,
-        "wires": []
-    },
-    {
         "id": "ded340c6a7858653",
         "type": "inject",
         "z": "4011939e64afe1b1",
-        "name": "",
+        "name": "test s",
         "props": [
             {
                 "p": "payload"
@@ -861,89 +824,34 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"date\":\"2024-06-02\",\"time\":\"22:41:21\",\"temperature\":20.5,\"pressure\":112584}",
+        "payload": "{\"date\":\"2024/06/02\",\"time\":\"22:41:21\",\"temperature\":20.5,\"pressure\":112584}",
         "payloadType": "json",
-        "x": 570,
-        "y": 640,
+        "x": 370,
+        "y": 740,
         "wires": [
             [
-                "341726230533250d"
+                "548b794e4e80eace"
             ]
         ]
     },
     {
-        "id": "f69f4b9d8b79a9a9",
+        "id": "548b794e4e80eace",
         "type": "http request",
         "z": "4011939e64afe1b1",
         "name": "HTTP POST",
         "method": "POST",
         "ret": "obj",
         "paytoqs": "ignore",
-        "url": "http://localhost:3001/api/realtime/receive-temperature",
+        "url": "http://localhost:3001/api/realtime",
         "tls": "",
         "persist": false,
         "proxy": "",
         "insecureHTTPParser": false,
         "authType": "",
         "senderr": false,
-        "headers": [
-            {
-                "keyType": "Content-Type",
-                "keyValue": "",
-                "valueType": "application/json",
-                "valueValue": ""
-            }
-        ],
-        "x": 1050,
-        "y": 700,
-        "wires": [
-            [
-                "0c321460c75e5626"
-            ]
-        ]
-    },
-    {
-        "id": "bbdd5a19bbed033c",
-        "type": "debug",
-        "z": "4011939e64afe1b1",
-        "name": "debug 6",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1340,
-        "y": 640,
-        "wires": []
-    },
-    {
-        "id": "548b794e4e80eace",
-        "type": "http request",
-        "z": "4011939e64afe1b1",
-        "name": "",
-        "method": "POST",
-        "ret": "txt",
-        "paytoqs": "ignore",
-        "url": "http://localhost:3001/api/realtime/receive-temperature",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [
-            {
-                "keyType": "Content-Type",
-                "keyValue": "",
-                "valueType": "application/json",
-                "valueValue": ""
-            }
-        ],
-        "x": 870,
-        "y": 860,
+        "headers": [],
+        "x": 710,
+        "y": 740,
         "wires": [
             [
                 "460ea87d68834633"
@@ -963,50 +871,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1120,
-        "y": 860,
-        "wires": []
-    },
-    {
-        "id": "8de04527331a9172",
-        "type": "inject",
-        "z": "4011939e64afe1b1",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"temperature\":20.5}                                                            ",
-        "payloadType": "json",
-        "x": 450,
-        "y": 860,
-        "wires": [
-            [
-                "4c32cc7f6a3c63c9",
-                "27a081c2d3514f7f"
-            ]
-        ]
-    },
-    {
-        "id": "4c32cc7f6a3c63c9",
-        "type": "debug",
-        "z": "4011939e64afe1b1",
-        "name": "debug 8",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 760,
-        "y": 920,
+        "x": 1100,
+        "y": 740,
         "wires": []
     },
     {
@@ -1014,22 +880,23 @@
         "type": "function",
         "z": "4011939e64afe1b1",
         "name": "Add Date and Time",
-        "func": "const data = msg.payload;\n\nconst now = new Date();\ndata.date = now.toISOString().split('T')[0]; // YYYY-MM-DD format\nconst time = now.toTimeString().split(' ')[0]; // HH:MM:SS format\n\ndata.time = time; // Add time field\n\nmsg.payload = data;\nreturn msg;",
+        "func": "/*\nconst data = msg.payload;\n\nconst now = new Date();\ndata.date = now.toISOString().split('T')[0]; // YYYY-MM-DD format\nconst time = now.toTimeString().split(' ')[0]; // HH:MM:SS format\n\ndata.time = time; // Add time field\n\nmsg.payload = data;\nreturn msg;\n*/\nconst data = msg.payload;\n\nconst now = new Date();\nconst year = now.getFullYear();\nconst month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-based\nconst day = String(now.getDate()).padStart(2, '0');\ndata.date = `${year}/${month}/${day}`; // YYYY/MM/DD format\nconst time = now.toTimeString().split(' ')[0]; // HH:MM:SS format\n\ndata.time = time; // Add time field\n\nmsg.payload = data;\nreturn msg;\n",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 570,
-        "y": 220,
+        "x": 530,
+        "y": 260,
         "wires": [
             [
                 "09c52b7a9940e21d",
                 "24a2a7fadf3df587",
                 "412f4d71128b5c06",
                 "3fd40cd2456f2618",
-                "341726230533250d",
+                "f80155d074467c80",
+                "548b794e4e80eace",
                 "9ed4077df27a955d"
             ]
         ]
@@ -1050,8 +917,8 @@
         "z": "4011939e64afe1b1",
         "name": "Realtime Data in MERN Dashboard",
         "info": "",
-        "x": 1140,
-        "y": 580,
+        "x": 820,
+        "y": 640,
         "wires": []
     },
     {
@@ -1069,10 +936,10 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"date\":\"2024-06-02\",\"time\":\"22:41:21\",\"temperature\":20.5,\"pressure\":112584}",
+        "payload": "{\"date\":\"2024/06/02\",\"time\":\"22:41:21\",\"temperature\":16,\"pressure\":100000}",
         "payloadType": "json",
-        "x": 590,
-        "y": 160,
+        "x": 550,
+        "y": 120,
         "wires": [
             [
                 "9ed4077df27a955d"
@@ -1096,8 +963,8 @@
         "topic": "",
         "payload": "{\"temperature\":22.5,\"pressure\":112584}",
         "payloadType": "json",
-        "x": 330,
-        "y": 300,
+        "x": 250,
+        "y": 180,
         "wires": [
             [
                 "ee9343f05b8994ea"
@@ -1105,15 +972,40 @@
         ]
     },
     {
-        "id": "27a081c2d3514f7f",
-        "type": "json",
+        "id": "f80155d074467c80",
+        "type": "debug",
         "z": "4011939e64afe1b1",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 710,
-        "y": 860,
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "eeb103412b6faa32",
+        "type": "inject",
+        "z": "4011939e64afe1b1",
+        "name": "test o",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"date\":\"2024/06/02\",\"time\":\"22:41:21\",\"temp\":16.5,\"pressure\":111590}",
+        "payloadType": "json",
+        "x": 370,
+        "y": 680,
         "wires": [
             [
                 "548b794e4e80eace"
@@ -1121,51 +1013,63 @@
         ]
     },
     {
-        "id": "6e04c768.235868",
-        "type": "http in",
-        "z": "b1e52247926f4807",
-        "name": "POST /post-data",
-        "url": "/post-data",
-        "method": "post",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 480,
-        "y": 380,
+        "id": "28ef4eeac51545c6",
+        "type": "inject",
+        "z": "a4d14a1321537e56",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 360,
+        "y": 260,
         "wires": [
             [
-                "e89abdfb.44b7a8"
+                "11f121810e668a19"
             ]
         ]
     },
     {
-        "id": "e89abdfb.44b7a8",
+        "id": "11f121810e668a19",
         "type": "function",
-        "z": "b1e52247926f4807",
-        "name": "Prepare JSON Data",
-        "func": "// Prepare JSON data\nvar jsonData = {\n    key1: 12,\n    key2: 10200\n};\n\n// Convert JSON to string\nvar jsonString = JSON.stringify(jsonData);\n\n// Set msg.payload to JSON string\nmsg.headers = {\n    \"Content-Type\": \"application/json\"\n};\nmsg.payload = jsonString;\n\nreturn msg;",
+        "z": "a4d14a1321537e56",
+        "name": "Format Payload",
+        "func": "msg.payload = {\n    date: \"2024/08/30\",\n    time: \"14:00:00\",\n    temp: 60,\n    pressure: 700\n};\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 680,
-        "y": 380,
+        "x": 550,
+        "y": 260,
         "wires": [
             [
-                "70cfb5c0.36541c"
+                "221f6e9a00111c8a"
             ]
         ]
     },
     {
-        "id": "70cfb5c0.36541c",
+        "id": "221f6e9a00111c8a",
         "type": "http request",
-        "z": "b1e52247926f4807",
-        "name": "Send JSON Data",
+        "z": "a4d14a1321537e56",
+        "name": "",
         "method": "POST",
-        "ret": "txt",
+        "ret": "obj",
         "paytoqs": "ignore",
-        "url": "http://localhost:3100/data",
+        "url": "http://localhost:3001/api/realtime",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -1173,19 +1077,19 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 900,
-        "y": 380,
+        "x": 770,
+        "y": 260,
         "wires": [
             [
-                "fcc1d14d.e6c8e"
+                "83ff0ff153da68c6"
             ]
         ]
     },
     {
-        "id": "fcc1d14d.e6c8e",
+        "id": "83ff0ff153da68c6",
         "type": "debug",
-        "z": "b1e52247926f4807",
-        "name": "Response Debug",
+        "z": "a4d14a1321537e56",
+        "name": "",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -1194,8 +1098,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1140,
-        "y": 380,
+        "x": 1010,
+        "y": 260,
         "wires": []
     }
 ]

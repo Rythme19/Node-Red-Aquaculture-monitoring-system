@@ -8,14 +8,6 @@
         "env": []
     },
     {
-        "id": "a4d14a1321537e56",
-        "type": "tab",
-        "label": "Flow 2",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
         "id": "7bf9ead0e521452d",
         "type": "mqtt-broker",
         "name": "Mosquito",
@@ -279,10 +271,13 @@
         "broker": "broker.hivemq.com",
         "port": "1883",
         "clientid": "",
+        "autoConnect": true,
         "usetls": false,
         "compatmode": false,
+        "protocolVersion": 4,
         "keepalive": "60",
         "cleansession": true,
+        "autoUnsubscribe": true,
         "birthTopic": "",
         "birthQos": "0",
         "birthPayload": "",
@@ -368,10 +363,12 @@
         "broker": "your.mqtt.broker",
         "port": "1883",
         "clientid": "node-red-practical",
+        "autoConnect": true,
         "usetls": false,
-        "compatmode": true,
+        "protocolVersion": 4,
         "keepalive": "60",
         "cleansession": true,
+        "autoUnsubscribe": true,
         "birthTopic": "",
         "birthQos": "0",
         "birthPayload": "",
@@ -392,7 +389,7 @@
         "type": "mqtt in",
         "z": "4011939e64afe1b1",
         "name": "",
-        "topic": "aquaculture/data",
+        "topic": "aquafarm/stats",
         "qos": "0",
         "datatype": "auto-detect",
         "broker": "92b2802d2c4cd65b",
@@ -400,11 +397,13 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 300,
-        "y": 280,
+        "x": 160,
+        "y": 340,
         "wires": [
             [
-                "ee9343f05b8994ea"
+                "cdbaba12567d5cbc",
+                "ee9343f05b8994ea",
+                "c03f23d3a3247e6f"
             ]
         ]
     },
@@ -417,8 +416,8 @@
         "name": "Database In",
         "collection": "sensordatas",
         "operation": "insertOne",
-        "x": 910,
-        "y": 160,
+        "x": 970,
+        "y": 200,
         "wires": [
             [
                 "f3cf11fb9c5f9e72"
@@ -437,8 +436,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 290,
-        "y": 860,
+        "x": 170,
+        "y": 1040,
         "wires": [
             []
         ]
@@ -457,7 +456,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1340,
-        "y": 160,
+        "y": 200,
         "wires": []
     },
     {
@@ -469,8 +468,8 @@
         "name": "Database all out",
         "collection": "sensordatas",
         "operation": "find.toArray",
-        "x": 720,
-        "y": 1480,
+        "x": 680,
+        "y": 1180,
         "wires": [
             [
                 "aff19ec85bf709e4"
@@ -484,8 +483,8 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 1510,
-        "y": 1480,
+        "x": 1470,
+        "y": 1180,
         "wires": []
     },
     {
@@ -500,8 +499,8 @@
         "tbodyStyle": "",
         "trStyle": "",
         "tdStyle": "",
-        "x": 1320,
-        "y": 1480,
+        "x": 1280,
+        "y": 1180,
         "wires": [
             [
                 "1bf5af5f49df9a72"
@@ -517,31 +516,11 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 510,
-        "y": 1480,
+        "x": 470,
+        "y": 1180,
         "wires": [
             [
                 "2f148c3941ac45fc"
-            ]
-        ]
-    },
-    {
-        "id": "3fd40cd2456f2618",
-        "type": "function",
-        "z": "4011939e64afe1b1",
-        "name": "Convert Time",
-        "func": "var date = msg.payload.date;\nvar time = msg.payload.time;\n\n// Combine date and time strings into a single string in ISO format\nvar isoDateTime = date + 'T' + time;\nvar formattedTime = new Date(isoDateTime).toLocaleString();\n\n// Set the formatted time value to msg.payload\nmsg.payload = formattedTime;\n\n// Return the modified msg object\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 910,
-        "y": 520,
-        "wires": [
-            [
-                "2238915295c41ba3"
             ]
         ]
     },
@@ -552,7 +531,7 @@
         "name": "Stock Data in Database",
         "info": "",
         "x": 920,
-        "y": 100,
+        "y": 140,
         "wires": []
     },
     {
@@ -562,7 +541,7 @@
         "name": "Realtime Data in Node-red Dashboard",
         "info": "",
         "x": 1070,
-        "y": 380,
+        "y": 460,
         "wires": []
     },
     {
@@ -577,8 +556,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 930,
-        "y": 440,
+        "x": 890,
+        "y": 520,
         "wires": [
             [
                 "c26df9a27a8c48d5"
@@ -609,8 +588,8 @@
         "seg2": "20",
         "diff": false,
         "className": "",
-        "x": 1390,
-        "y": 440,
+        "x": 1350,
+        "y": 520,
         "wires": []
     },
     {
@@ -637,8 +616,8 @@
         "seg2": "",
         "diff": false,
         "className": "",
-        "x": 1400,
-        "y": 480,
+        "x": 1360,
+        "y": 560,
         "wires": []
     },
     {
@@ -653,8 +632,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 920,
-        "y": 480,
+        "x": 880,
+        "y": 560,
         "wires": [
             [
                 "f9cc2511b9174424"
@@ -673,8 +652,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1030,
-        "y": 1540,
+        "x": 990,
+        "y": 1240,
         "wires": [
             []
         ]
@@ -696,8 +675,8 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 1410,
-        "y": 520,
+        "x": 1370,
+        "y": 600,
         "wires": []
     },
     {
@@ -712,8 +691,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1020,
-        "y": 1480,
+        "x": 980,
+        "y": 1180,
         "wires": [
             [
                 "fa7ee4d0885f4183"
@@ -726,8 +705,8 @@
         "z": "4011939e64afe1b1",
         "name": "Extract Data from DB with http get request and display it in a html table",
         "info": "",
-        "x": 1030,
-        "y": 1420,
+        "x": 990,
+        "y": 1120,
         "wires": []
     },
     {
@@ -745,7 +724,7 @@
         "inputtypemessage": "msg",
         "rejectssl": false,
         "x": 1360,
-        "y": 280,
+        "y": 360,
         "wires": [
             [
                 "3d4201cd71721d2b"
@@ -757,15 +736,15 @@
         "type": "function",
         "z": "4011939e64afe1b1",
         "name": "Convert Json to String",
-        "func": "// Check if the message has a payload\nif (msg.payload) {\n    // Create a custom message\n    var customMessage = \"Alert! \";\n\n    // Check for temperature and pressure in the payload\n    if (msg.payload.temperature !== undefined) {\n        customMessage += \"Temperature: \" + msg.payload.temperature + \"°C. \";\n    }\n\n    if (msg.payload.pressure !== undefined) {\n        customMessage += \"Pressure: \" + msg.payload.pressure + \" Pa. \";\n    }\n\n    if (msg.payload.time !== undefined) {\n        customMessage += \"Time: \" + msg.payload.time + \".\";\n    }\n\n    // Set the custom message as the payload and convert to string\n    msg.payload = customMessage;\n    return msg;\n} else {\n    // No payload, do not send the message\n    return null;\n}\n",
+        "func": "// Check if the message has a payload\nif (msg.payload) {\n    // Create a custom message\n    var customMessage = \"Alert! \";\n\n    // Check for temperature and pressure in the payload\n    if (msg.payload.temperature !== undefined) {\n        customMessage += \"Temperature: \" + msg.payload.temperature + \"°C. \";\n    }\n\n    if (msg.payload.pressure !== undefined) {\n        customMessage += \"Pressure: \" + msg.payload.pressure + \" Pa. \";\n    }\n\n    if (msg.payload.time !== undefined) {\n        customMessage += \"Time: \" + msg.payload.time + \".\";\n    }\n\n    // Set the custom message as the payload and convert to string\n    msg.payload = customMessage;\n    return msg;\n} else {\n    // No payload, do not send the message\n    return null;\n}",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1100,
-        "y": 280,
+        "x": 1120,
+        "y": 360,
         "wires": [
             [
                 "bf56e781cda39fa3"
@@ -777,15 +756,15 @@
         "type": "function",
         "z": "4011939e64afe1b1",
         "name": "IF",
-        "func": "var temperature = msg.payload.temperature;\nvar pressure = msg.payload.pressure;\nvar date = msg.payload.date;\nvar time = msg.payload.time;\n\n// Combine date and time strings into a single string in ISO format\nvar isoDateTime = date + 'T' + time;\nvar formattedTime = new Date(isoDateTime).toLocaleString();\n\nvar newPayload = {};\nvar conditionMet = false;\n\nif (temperature > 40) {\n    newPayload.temperature = temperature;\n    conditionMet = true;\n}\n\nif (pressure > 115584) {\n    newPayload.pressure = pressure;\n    conditionMet = true;\n}\n\nif (conditionMet) {\n    newPayload.time = formattedTime;\n    msg.payload = newPayload;\n    return msg;\n} else {\n    return null;  // Do not send the message if no condition is met\n}\n",
+        "func": "var temperature = msg.payload.temperature;\nvar pressure = msg.payload.pressure;\nvar date = msg.payload.date;\nvar time = msg.payload.time;\n\n// Combine date and time strings into a single string in ISO format\nvar isoDateTime = date.replace(/\\//g, '-') + 'T' + time + '+01:00'; // Adjusted for CET (UTC+1)\nvar formattedTime = new Date(isoDateTime).toLocaleString('en-US', { timeZone: 'Africa/Tunis' });\n\nvar newPayload = {};\nvar conditionMet = false;\n\nif (temperature > 40) {\n    newPayload.temperature = temperature;\n    conditionMet = true;\n}\n\nif (pressure > 115584) {\n    newPayload.pressure = pressure;\n    conditionMet = true;\n}\n\nif (conditionMet) {\n    newPayload.time = formattedTime;\n    msg.payload = newPayload;\n    return msg;\n} else {\n    return null;  // Do not send the message if no condition is met\n}\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 910,
-        "y": 280,
+        "x": 870,
+        "y": 360,
         "wires": [
             [
                 "82ea814a6be4b884"
@@ -797,7 +776,7 @@
         "type": "debug",
         "z": "4011939e64afe1b1",
         "name": "debug 4",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -806,33 +785,8 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1580,
-        "y": 280,
+        "y": 360,
         "wires": []
-    },
-    {
-        "id": "ded340c6a7858653",
-        "type": "inject",
-        "z": "4011939e64afe1b1",
-        "name": "test s",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"date\":\"2024/06/02\",\"time\":\"22:41:21\",\"temperature\":20.5,\"pressure\":112584}",
-        "payloadType": "json",
-        "x": 370,
-        "y": 740,
-        "wires": [
-            [
-                "548b794e4e80eace"
-            ]
-        ]
     },
     {
         "id": "548b794e4e80eace",
@@ -850,8 +804,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 710,
-        "y": 740,
+        "x": 790,
+        "y": 840,
         "wires": [
             [
                 "460ea87d68834633"
@@ -871,8 +825,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1100,
-        "y": 740,
+        "x": 1120,
+        "y": 840,
         "wires": []
     },
     {
@@ -887,15 +841,13 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 530,
-        "y": 260,
+        "x": 570,
+        "y": 340,
         "wires": [
             [
                 "09c52b7a9940e21d",
                 "24a2a7fadf3df587",
                 "412f4d71128b5c06",
-                "3fd40cd2456f2618",
-                "f80155d074467c80",
                 "548b794e4e80eace",
                 "9ed4077df27a955d"
             ]
@@ -907,8 +859,8 @@
         "z": "4011939e64afe1b1",
         "name": "ALERT",
         "info": "",
-        "x": 1130,
-        "y": 220,
+        "x": 1110,
+        "y": 280,
         "wires": []
     },
     {
@@ -917,8 +869,8 @@
         "z": "4011939e64afe1b1",
         "name": "Realtime Data in MERN Dashboard",
         "info": "",
-        "x": 820,
-        "y": 640,
+        "x": 920,
+        "y": 760,
         "wires": []
     },
     {
@@ -938,12 +890,10 @@
         "topic": "",
         "payload": "{\"date\":\"2024/06/02\",\"time\":\"22:41:21\",\"temperature\":16,\"pressure\":100000}",
         "payloadType": "json",
-        "x": 550,
-        "y": 120,
+        "x": 170,
+        "y": 1080,
         "wires": [
-            [
-                "9ed4077df27a955d"
-            ]
+            []
         ]
     },
     {
@@ -961,9 +911,9 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"temperature\":22.5,\"pressure\":112584}",
+        "payload": "{\"temperature\":23,\"pressure\":112512}",
         "payloadType": "json",
-        "x": 250,
+        "x": 210,
         "y": 180,
         "wires": [
             [
@@ -972,10 +922,10 @@
         ]
     },
     {
-        "id": "f80155d074467c80",
+        "id": "cdbaba12567d5cbc",
         "type": "debug",
         "z": "4011939e64afe1b1",
-        "name": "debug 9",
+        "name": "debug 10",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -983,123 +933,58 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 820,
-        "y": 220,
+        "x": 460,
+        "y": 440,
         "wires": []
     },
     {
-        "id": "eeb103412b6faa32",
-        "type": "inject",
+        "id": "a9e0a812dcaf4188",
+        "type": "comment",
         "z": "4011939e64afe1b1",
-        "name": "test o",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"date\":\"2024/06/02\",\"time\":\"22:41:21\",\"temp\":16.5,\"pressure\":111590}",
-        "payloadType": "json",
-        "x": 370,
-        "y": 680,
-        "wires": [
-            [
-                "548b794e4e80eace"
-            ]
-        ]
-    },
-    {
-        "id": "28ef4eeac51545c6",
-        "type": "inject",
-        "z": "a4d14a1321537e56",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 360,
+        "name": "Subscribe To MQTT Broker",
+        "info": "",
+        "x": 170,
         "y": 260,
-        "wires": [
-            [
-                "11f121810e668a19"
-            ]
-        ]
+        "wires": []
     },
     {
-        "id": "11f121810e668a19",
+        "id": "3fd40cd2456f2618",
         "type": "function",
-        "z": "a4d14a1321537e56",
-        "name": "Format Payload",
-        "func": "msg.payload = {\n    date: \"2024/08/30\",\n    time: \"14:00:00\",\n    temp: 60,\n    pressure: 700\n};\nreturn msg;",
+        "z": "4011939e64afe1b1",
+        "name": "Convert Time",
+        "func": "var date = msg.payload.date;\nvar time = msg.payload.time;\n\n// Combine date and time strings into a single string in ISO format\nvar isoDateTime = date + 'T' + time;\nvar formattedTime = new Date(isoDateTime).toLocaleString();\n\n// Set the formatted time value to msg.payload\nmsg.payload = formattedTime;\n\n// Return the modified msg object\nreturn msg;\n",
         "outputs": 1,
-        "timeout": "",
+        "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 550,
-        "y": 260,
+        "x": 870,
+        "y": 600,
         "wires": [
             [
-                "221f6e9a00111c8a"
+                "2238915295c41ba3"
             ]
         ]
     },
     {
-        "id": "221f6e9a00111c8a",
-        "type": "http request",
-        "z": "a4d14a1321537e56",
-        "name": "",
-        "method": "POST",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "http://localhost:3001/api/realtime",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 770,
-        "y": 260,
+        "id": "c03f23d3a3247e6f",
+        "type": "function",
+        "z": "4011939e64afe1b1",
+        "name": "Time Format for NR Dashboard",
+        "func": "const data = msg.payload;\n\nconst now = new Date();\ndata.date = now.toISOString().split('T')[0]; // YYYY-MM-DD format\nconst time = now.toTimeString().split(' ')[0]; // HH:MM:SS format\n\ndata.time = time; // Add time field\n\nmsg.payload = data;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 600,
         "wires": [
             [
-                "83ff0ff153da68c6"
+                "3fd40cd2456f2618"
             ]
         ]
-    },
-    {
-        "id": "83ff0ff153da68c6",
-        "type": "debug",
-        "z": "a4d14a1321537e56",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1010,
-        "y": 260,
-        "wires": []
     }
 ]

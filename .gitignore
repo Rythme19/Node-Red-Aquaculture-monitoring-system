@@ -1,1 +1,3 @@
 *.backup
+# Identifiants Node-RED : ne jamais versionner
+flows_cred.json
